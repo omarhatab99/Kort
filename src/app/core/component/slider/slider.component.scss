@@ -1,0 +1,89 @@
+@import '../../../../styles.scss';
+
+section {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    overflow: hidden;
+}
+
+.bgImgCaption {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    transform: translateX(-100%);
+    height: 100%;
+    width: 100%;
+    background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
+
+}
+
+
+.icon {
+    position: absolute;
+    @include verticalCenter();
+    justify-content: space-between;
+    width: 100%;
+    height: 100%;
+    top: 0;
+
+
+    button {
+        @include iconButton;
+        @include verticalCenter();
+        color: $groundColor;
+        background-color: rgba($color: #fff, $alpha: .3);
+        padding: 15px 9px;
+        margin: 3px;
+
+        mat-icon {
+            font-size: 12px;
+            height: fit-content;
+        }
+    }
+}
+
+@mixin outAnimation() {
+    animation-duration: 1.5s;
+    animation-fill-mode: forwards;
+    animation-timing-function: ease-out;
+}
+
+@mixin inAnimation() {
+    animation-duration: 1.5s;
+    animation-fill-mode: forwards;
+    animation-timing-function: ease-in;
+}
+
+.backOutLeft {
+    animation-name: backOutLeft;
+    @include outAnimation();
+}
+
+.backOutRight {
+    animation-name: backOutRight;
+    @include outAnimation();
+}
+
+.backInLeft {
+    @include inAnimation();
+    animation-name: backInLeft;
+}
+
+.backInRight {
+    @include inAnimation();
+    animation-name: backInRight;
+}
+
+@media screen and (max-width:425px) {
+
+    .icon {
+        button {
+            padding:8px 2px !important;
+        }
+    }
+}

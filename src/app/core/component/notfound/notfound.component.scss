@@ -1,0 +1,33 @@
+@import '../../../../styles.scss';
+
+div {
+    height: calc(100vh - 100px);
+    background-color: white;
+    @include verticalCenter();
+    justify-content: center;
+
+    div {
+        height: 70%;
+        background-color: $bgColor;
+        border-radius: 10px;
+        width: 80%;
+        min-width: 400px;
+
+        display: flex;
+        align-content: center;
+        justify-content: center;
+        flex-wrap: wrap;
+        gap: 15px;
+        text-align: center;
+
+        h1 {
+            font-size: $fontSizeH1;
+            width: 90%;
+        }
+
+        p {
+            width: 90%;
+            font-size: $fontSizeH2;
+        }
+    }
+}

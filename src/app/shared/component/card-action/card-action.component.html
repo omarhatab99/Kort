@@ -1,0 +1,24 @@
+<div class="shopping" [class.lastView]="isSmallCard">
+    <button [@roll] addToShoppingCart (click)="addToCart()" *ngIf="!inCart">
+        <!-- if product is add to cart  -->
+        <ng-container>
+            <mat-icon>add_shopping_cart</mat-icon>
+            <span *ngIf="!isSmallCard">اضف الي السلة</span>
+        </ng-container>
+
+    </button>
+
+    <product-quantity [@roll] *ngIf="inCart" [productQuantity]="inCart" [isSmallCard]="isSmallCard"
+        [productId]="product.id"></product-quantity>
+
+    <div product-action>
+        <button>
+            <mat-icon share>share</mat-icon>
+        </button>
+        <button (click)="isFavoriteAction()">
+            <mat-icon *ngIf="!product.isFavorite" unFavorite>favorite_outline</mat-icon>
+            <mat-icon *ngIf="product.isFavorite" favorite>favorite</mat-icon>
+        </button>
+    </div>
+
+</div>

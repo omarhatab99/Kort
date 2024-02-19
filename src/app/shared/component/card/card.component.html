@@ -1,0 +1,41 @@
+<!-- localization -->
+<div class="card" [class.lastView]="isSmallCard">
+    <!-- product image  -->
+    <div class="card-image skeleton" [style.background-image]="'url(' + product.imgUrl + ')'">
+        <div class=" card-image-swapper">
+            <button swap>
+                <mat-icon>
+                    swap_horiz
+                </mat-icon>
+            </button>
+            <button class="newBtn" *ngIf="!product.discountPersantage">
+                جديد
+            </button>
+            <button class="discountBtn" *ngIf="product.discountPersantage">
+                عرض
+            </button>
+        </div>
+    </div>
+    <!-- product information -->
+    <div class="card-body">
+
+        <!-- title -->
+        <h4 class="product-title skeleton" [ngClass]="!isSmallCard ? 'skeleton-card__text':'skeleton-small_card__text'">
+            تيشرت-شتوي-3-خصم</h4>
+        <!-- rateing -->
+        <rating *ngIf="!isSmallCard" [product]="product"></rating>
+        <!-- price  -->
+        <div class="price skeleton skeleton-card__text" >
+            <div [style.text-decoration]="product.discountPersantage?'line-through':'none'" class="fixed-price">
+                {{product.price |Egy}}
+            </div>
+            <div class="discount" *ngIf="product?.discountPersantage">{{product.discountPrice |Egy}}</div>
+        </div>
+
+        <!-- add shopping to card  -->
+        <card-action class="skeleton" [ngClass]="isSmallCard ? 'skeleton-small_card__footer':'skeleton-card__footer'"
+            [product]="product" [isSmallCard]="isSmallCard"></card-action>
+
+    </div>
+
+</div>

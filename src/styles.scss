@@ -1,0 +1,95 @@
+@import url('https://fonts.googleapis.com/css2?family=Cairo:wght@300&display=swap');
+@import 'app/shared/shared-styles/container.scss';
+@import 'app/shared/shared-styles/skeleton.scss';
+@import 'app/shared/shared-styles/animation.scss';
+
+
+$fontSizeH1: 24pt;
+$fontSizeH2: 18pt;
+$fontSizeH3: 18pt;
+$fontSizeH4: 18pt;
+$fontSizeH5: 16pt;
+$fontSizeTitle: 16pt;
+$fontSizeBodyText: 14pt;
+$fontSizeCaption: 12pt;
+
+$bgColor: #f6f6f6;
+$primaryColor: #302ca2;
+$AccentColor: #23104e;
+$seconderyColor: #26a37c;
+$startOff: #eaeaea;
+$startOn: #ffe621;
+$dividerGray: #b7aeca;
+$groundColor: #ffffff;
+
+@mixin stripper() {
+    padding: 0px !important;
+    margin: 0px !important;
+    box-sizing: border-box !important;
+}
+
+@mixin clickBehaviour() {
+    cursor: pointer;
+
+    &:hover {
+        filter: brightness(90%);
+    }
+
+    &:active {
+        filter: brightness(70%);
+    }
+}
+
+@mixin iconButton {
+    outline: none;
+    background-color: transparent;
+    border: none;
+    border-radius: 5px;
+    padding: 4px;
+    transition: .2s;
+    @include verticalCenter();
+    @include clickBehaviour();
+
+}
+
+@mixin verticalCenter() {
+    display: flex;
+    align-items: center;
+}
+
+body {
+    direction: rtl;
+    margin: 0;
+    background-color: $bgColor;
+}
+
+* {
+    &:not(mat-icon, button) {
+        font-family: 'Cairo', sans-serif;
+        margin: 0px;
+        padding: 0px;
+    }
+
+    box-sizing: border-box;
+    letter-spacing: normal;
+
+}
+
+.menuItem {
+    * {
+        color: $primaryColor;
+        min-width: 150px;
+        text-align: center;
+    }
+}
+
+.active-navItem {
+    // background-color: red;
+    font-weight: 800;
+    background-color: rgba(0, 0, 0, .1);
+}
+
+.active-chip {
+    background-color: tomato !important;
+    color: white;
+}

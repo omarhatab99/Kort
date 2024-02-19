@@ -1,0 +1,176 @@
+@import '../../../../styles.scss';
+
+div[searchNavPlace] {
+    height: 50px;
+}
+
+#search-nav {
+    background-color: #fff !important;
+    height: 50px;
+    @include verticalCenter();
+    position: fixed;
+    left: 0;
+    right: 0;
+    z-index: 11;
+
+    mat-toolbar {
+        background-color: #fff;
+        height: 65%;
+        gap: 10px;
+        color: $primaryColor;
+
+        header {
+            button{
+                @include iconButton();
+                img {
+                    width: 100%;
+                    height: 100%;
+                }
+            }
+        }
+
+        .search-container {
+            @include verticalCenter();
+            flex-wrap: nowrap;
+            flex-grow: 1;
+            border-radius: 10px;
+            height: 100%;
+            background-color: $bgColor ;
+
+
+            input {
+                border: none;
+                outline: none;
+                font-size: $fontSizeCaption;
+                padding: 10px;
+                width: 100%;
+                background-color: transparent;
+                color: $primaryColor;
+
+                &::placeholder {
+                    color: $primaryColor;
+                }
+            }
+
+            #searchBtn {
+                background-color: transparent;
+                border: none;
+
+                .search-icon {
+                    margin-right: 5px;
+                    color: $primaryColor;
+                    @include verticalCenter();
+                    @include clickBehaviour();
+                }
+            }
+        }
+
+        .person-icon {
+            @include iconButton();
+            height: 100%;
+            background-color: $bgColor;
+            border-radius: 5px;
+
+            mat-icon {
+                color: $primaryColor;
+            }
+        }
+
+        .cart {
+            height: 100%;
+            margin-right: 5px;
+            padding-left: 16px;
+            button{
+                height: 100%;
+                @include iconButton();
+                background-color: $bgColor;
+                font-size: $fontSizeBodyText;
+                color: $primaryColor
+            }
+
+            mat-icon {
+                @include verticalCenter();
+                font-size: $fontSizeBodyText;
+            }
+
+            p {
+                @include stripper();
+                padding: 0px 10px !important;
+                font-size: $fontSizeBodyText;
+            }
+            .quantity{
+                @include iconButton();
+                height: 80%;
+                background-color: rgb(240, 237, 77);
+                font-size: 12px;
+                font-weight: 700 !important;
+            }
+        }
+    }
+}
+
+
+#items-nav {
+    height: 40px;
+    @include verticalCenter();
+
+    button[menuBtn] {
+        @include iconButton();
+        background-color: $primaryColor;
+        padding: 5px 11px;
+        margin-right: 5px;
+        
+        *{
+            color: #fff;
+            font-size: $fontSizeTitle;
+        }
+    }
+
+    * {
+        font-size: $fontSizeBodyText;
+        color: $primaryColor;
+
+    }
+
+    mat-toolbar {
+        height: 90%;
+        list-style: none;
+        gap: 10px;
+
+        .item-list {
+            height: 100%;
+            .item-link {
+                padding:4px 8px  !important;
+                height: 100%;
+                min-width: 70px;
+                @include verticalCenter();
+                justify-content: center;
+                direction: ltr;
+            }
+        }
+
+        mat-menu {
+            min-width: 450px;
+            color: $primaryColor;
+
+        }
+
+        .menuItem {
+            * {
+                background-color: red;
+            }
+        }
+    }
+
+}
+
+// show hide nave bar while scrolling 
+.navbar-hidden {
+    transform: translateY(-100%);
+    transition: all 0.3s ease-in-out;
+}
+
+.navbar-visible {
+    transform: translateY(0);
+    transition: transform 0.3s ease-in-out;
+}

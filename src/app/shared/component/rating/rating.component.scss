@@ -1,0 +1,8 @@
+@import '../../../../styles.scss';
+
+.rating {
+    mat-icon {
+        @include clickBehaviour();
+        color: $startOn;
+    }
+}

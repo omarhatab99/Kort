@@ -1,0 +1,109 @@
+@import '../../../../styles.scss';
+
+.shopping {
+    margin-bottom: 5px;
+    @include verticalCenter();
+    justify-content: space-between;
+
+    button[addToShoppingCart] {
+        @include iconButton();
+        @include verticalCenter();
+        background-color: $primaryColor;
+        color: $groundColor;
+        padding: 4px 8px;
+        min-width: 55%;
+        border-radius: 14px;
+        font-size: $fontSizeCaption;
+
+        mat-icon {
+            margin-left: 10px;
+        }
+
+        &:disabled {
+            color: $seconderyColor;
+            background-color: $startOff;
+
+            &:active {
+                filter: none;
+            }
+
+            &:hover {
+                filter: none;
+            }
+        }
+    }
+
+    div[product-action] {
+        flex-grow: 1;
+        @include verticalCenter();
+        justify-content: space-around;
+
+        button {
+            @include iconButton();
+
+            mat-icon {
+                &[share] {
+                    color: $AccentColor;
+                }
+
+                &[favorite] {
+                    color: tomato;
+                }
+
+                &[unFavorite] {
+                    color: $startOff;
+                }
+            }
+        }
+    }
+}
+
+.lastView {
+    mat-icon {
+        font-size: 18px !important;
+    }
+
+    button[addToShoppingCart] {
+        @include iconButton();
+        padding: 0;
+
+        mat-icon {
+            color: $AccentColor;
+            margin: 0;
+        }
+
+    }
+
+}
+
+product-quantity {
+    min-width: 55%;
+
+}
+
+
+@media only screen and (max-width: 768px) {
+    button[addToShoppingCart] {
+        font-size: 10pt !important;
+    }
+}
+
+@media only screen and (max-width: 450px) {
+    .shopping {
+        flex-direction: column-reverse;
+        gap: 4px;
+
+        * {
+            width: 100%;
+        }
+
+        button[addToShoppingCart] {
+            justify-content: space-around;
+            flex-direction: row-reverse;
+
+            * {
+                width: fit-content;
+            }
+        }
+    }
+}

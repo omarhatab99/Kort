@@ -1,0 +1,55 @@
+<!-- home page  -->
+<section class="container" [class.active-skeleton]="isLoading">
+    <!-- Slider -->
+    <div slider class="skeleton skeleton-slider">
+        <slider [imgList]="bgImgList"> </slider>
+    </div>
+    <!-- Categories -->
+    <div categories>
+        <!-- Static category -->
+        <ng-container *ngIf="!isTabletMode">
+            <div class=" lastView">
+                <p>منتجات تصفحتها مؤخرا</p>
+            </div>
+            <div class="new "> 
+                <div divider>
+                    <p>وصل حديث</p>
+                    <span dividerLine> </span>
+                    <button mat-stroked-button>عرض الكل</button>
+                </div>
+            </div>
+        </ng-container>
+        <!-- Chips -->
+        <div class="chip" *ngIf="isTabletMode">
+            <button class="skeleton" routerLinkActive="active-chip" routerLink="/" [queryParams]="{category:'new'}">وصل
+                حديثاً</button>
+            <button class="skeleton" routerLinkActive="active-chip" routerLink="/"
+                [queryParams]="{category:'lastView'}">
+                منتجات تصفحتها مؤخراً</button>
+            <button class="skeleton" routerLinkActive="active-chip" routerLink="/" [queryParams]="{category:'all'}">عرض
+                الكل</button>
+        </div>
+    </div>
+    <!-- prockuct list view  -->
+    <div product-view>
+        <!--last view product -->
+        <div class="lastView" *ngIf="!isTabletMode">
+            <ng-container *ngFor="let product of products?.lastView ; trackBy: trackByProductId">
+                <!-- for loader skeleton -->
+                <productCard *ngIf=" isLoading" [smallCard]="true" [product]="product"></productCard>
+                <!-- real product view -->
+                <productCard *ngIf="!isLoading" [@swap] [smallCard]="true" [product]="product"></productCard>
+            </ng-container>
+        </div>
+
+        <!--product View List-->
+        <div class="new">
+            <ng-container *ngFor="let product of productList; trackBy: trackByProductId">
+                <!-- for loader skeleton -->
+                <productCard *ngIf="isLoading" [product]="product"></productCard>
+                <!-- real product view -->
+                <productCard *ngIf="!isLoading" [@swap] [product]="product"></productCard>
+            </ng-container>
+        </div>
+    </div>
+</section>

@@ -1,0 +1,103 @@
+@import '../../../../styles.scss';
+
+nav[sidbarOverlay] {
+    position: fixed;
+    overflow: hidden;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    z-index: 99;
+    background-color: rgba(0, 0, 0, .4);
+}
+
+#items-nav {
+    @include verticalCenter();
+
+    * {
+        font-size: $fontSizeBodyText;
+        color: $primaryColor;
+
+    }
+
+    mat-toolbar {
+        height: 90%;
+        list-style: none;
+        gap: 10px;
+
+        .item-list {
+            height: 100%;
+
+            .item-link {
+                height: 100%;
+                min-width: 70px;
+                @include verticalCenter();
+                justify-content: center;
+                direction: ltr;
+            }
+        }
+
+        mat-menu {
+            min-width: 450px;
+            color: $primaryColor;
+        }
+
+    }
+
+}
+
+div[slideBar] {
+    position: fixed;
+    right: 14px;
+    top: 40px;
+    max-width: 350px;
+    min-height: 400px;
+    border-radius: 8px;
+    background-color: $groundColor;
+    padding: 10px;
+    padding-top: 2px;
+
+    .close-btn {
+        background-color: rgba(0, 0, 0, .01);
+
+        mat-icon {
+            background-color: transparent;
+        }
+    }
+
+    .row {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-start;
+        padding: 8px;
+
+        &[cartRow] {
+            padding: 8px;
+        }
+    }
+
+    #items-nav {
+        width: 100%;
+
+        mat-toolbar {
+            background-color: transparent;
+            flex-direction: column;
+            align-items: flex-start;
+            width: 100%;
+            gap: 10px;
+
+            .item-list {
+                background-color: $bgColor;
+                width: 100%;
+                padding: 5px;
+                border-radius: 5px;
+            }
+        }
+    }
+
+}
+@media screen and (max-width:500px) {
+    div[slideBar] {
+        max-width: 280px !important;
+    }
+}

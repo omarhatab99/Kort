@@ -1,0 +1,74 @@
+<!-- shopping cart table  -->
+<!-- heading -->
+<section class="container">
+    <h1>سله التسوق</h1>
+    <p>
+        انت تمتلك <strong class="skeleton totalItemCount"> {{cartModel.totalItemCount}}</strong> منتج.
+        <button (click)="openDialog('All item')" mat-button color="warn">مسح الكل</button>
+    </p>
+    <table mat-table [dataSource]="dataSource" class="mat-elevation-z1 " [class.active-skeleton]="loading">
+        <!--index number  -->
+        <ng-container matColumnDef="index">
+            <th mat-header-cell *matHeaderCellDef> م </th>
+            <td mat-cell *matCellDef="let i=index" class="skeleton skeleton-text">
+                {{(i+1)+(paginator.pageIndex * paginator.pageSize)}}
+            </td>
+            <td mat-footer-cell *matFooterCellDef> </td>
+        </ng-container>
+
+        <ng-container matColumnDef="productName">
+            <th bd-l mat-header-cell *matHeaderCellDef> الاسم </th>
+            <td bd-l mat-cell *matCellDef="let item" class="skeleton skeleton-text">
+                {{item?.product.title}}
+            </td>
+            <td mat-footer-cell *matFooterCellDef> </td>
+        </ng-container>
+
+        <!-- Quantity Column -->
+        <ng-container matColumnDef="quantity">
+            <th bd-l mat-header-cell *matHeaderCellDef class="text-center"> الكمية</th>
+            <td bd-l mat-cell *matCellDef="let item" class="skeleton skeleton-text">
+                <div class="cdk-quantity">
+                    <ng-container *ngIf="!item.skeleton">
+                        <product-quantity [productId]="item?.product.id" [productQuantity]="item?.quantity"
+                            [minIcon]="minIcon"></product-quantity>
+                    </ng-container>
+                </div>
+            </td>
+            <td mat-footer-cell *matFooterCellDef> </td>
+        </ng-container>
+
+        <!-- price Column -->
+        <ng-container matColumnDef="price">
+            <th bd-l mat-header-cell *matHeaderCellDef> السعر</th>
+            <td bd-l mat-cell *matCellDef="let item" class="skeleton skeleton-text">
+                <ng-container *ngIf="!item.skeleton">
+                    {{(item?.product.discountPrice || item?.product.price) | Egy }}
+                </ng-container>
+            </td>
+            <td mat-footer-cell *matFooterCellDef> </td>
+        </ng-container>
+
+        <!-- TotalPrice Column -->
+        <ng-container matColumnDef="totalPrice">
+            <th bd-l mat-header-cell *matHeaderCellDef> السعر الكلي</th>
+
+            <td bd-l mat-cell *matCellDef="let item" class="skeleton skeleton-text">
+                    {{item?.countItemPrice | Egy}}
+            </td>
+
+            <td mat-footer-cell *matFooterCellDef class="skeleton skeleton-text">
+                    <strong> {{cartModel.totalCartPrice | Egy}} </strong>
+            </td>
+        </ng-container>
+
+        <!-- display col depond on display Columns -->
+        <tr mat-header-row *matHeaderRowDef="displayedColumns">
+        </tr>
+        <tr mat-footer-row *matFooterRowDef="displayedFooters"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;">
+        </tr>
+
+    </table>
+    <mat-paginator #paginator [pageSize]="5" [pageSizeOptions]="[5, 10, 25]" showFirstLastButtons></mat-paginator>
+</section>

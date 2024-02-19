@@ -1,0 +1,58 @@
+<nav (click)="scope($event)" sidbarOverlay [@slideInOut]="open ? 'in' : 'out'">
+
+    <div class="container" slideBar #slideBar>
+        <button mat-icon-button class="close-btn" (click)="close()">
+            <mat-icon class="close">close</mat-icon>
+        </button>
+
+        <!-- nav item row  -->
+        <div class="row" itemList>
+            <div id="items-nav">
+                <mat-toolbar>
+                    <li class="item-list">
+                        <a class="item-link" [matMenuTriggerFor]="menu" mat-button>
+                            <mat-icon>keyboard_arrow_down</mat-icon>
+                            <span> الاقسام</span>
+                        </a>
+                    </li>
+
+                    <li class="item-list" (click)="close()">
+                        <a class="item-link" routerLink="home" routerLinkActive="active-navItem" mat-button>الرئيسة</a>
+                    </li>
+
+                    <li class="item-list" (click)="close()">
+                        <a class="item-link" routerLink="/support/hoppies" routerLinkActive="active-navItem"
+                            mat-button>قائمة الأمنيات</a>
+                    </li>
+
+                    <li class="item-list" (click)="close()">
+                        <a class="item-link " routerLink="/support/contactUs" routerLinkActive="active-navItem"
+                            mat-button>تواصل معنا</a>
+                    </li>
+
+                    <li class="item-list" (click)="close()">
+                        <a class="item-link" routerLink="/support/blog" routerLinkActive="active-navItem" mat-button>من
+                            نحن</a>
+                    </li>
+
+                    <mat-menu #menu="matMenu" yPosition="above" xPosition="after">
+                        <button class="menuItem" (click)="close()" mat-menu-item routerLinkActive="activeLink"
+                            routerLink="/department/1" routerLinkActive="active-navItem">القسم الاول
+                        </button>
+                        <button class="menuItem" (click)="close()" mat-menu-item routerLinkActive="activeLink"
+                            routerLink="/department/2" routerLinkActive="active-navItem">القسم الثاني
+                        </button>
+                        <button class="menuItem" (click)="close()" mat-menu-item routerLinkActive="activeLink"
+                            routerLink="/department/3" routerLinkActive="active-navItem">القسم الثالث
+                        </button>
+                        <button class="menuItem " (click)="close()" mat-menu-item routerLinkActive="activeLink"
+                            routerLink="/department/4" routerLinkActive="active-navItem">القسم الرابع
+                        </button>
+                    </mat-menu>
+
+                </mat-toolbar>
+            </div>
+        </div>
+    </div>
+
+</nav>

@@ -1,0 +1,155 @@
+@import '../../../../styles.scss';
+
+.card {
+    box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.2);
+    border-radius: 5px;
+    width: 235px;
+    height: 390px;
+    overflow: hidden;
+    background-color: $groundColor;
+
+    .card-image {
+        height: 60%;
+        width: 100%;
+        position: relative;
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-position: center top;
+
+        .card-image-swapper {
+            position: absolute;
+            @include verticalCenter();
+            justify-content: space-between;
+            padding: 10px;
+            height: 10px !important;
+            width: 100%;
+            top: 10px;
+
+            button[swap] {
+                @include iconButton();
+                @include clickBehaviour();
+                color: $AccentColor;
+            }
+
+            button {
+                @include iconButton();
+                @include clickBehaviour();
+                background-color: $AccentColor;
+                font-size: $fontSizeCaption;
+                color: $groundColor;
+                border-radius: 12px;
+                padding: 4px 10px;
+            }
+
+            .discountBtn {
+                background-color: $seconderyColor;
+            }
+        }
+    }
+
+    .card-body {
+        background-color: blue;
+        padding: 5px;
+        height: 40%;
+        background-color: $groundColor;
+        @include verticalCenter();
+        flex-wrap: wrap;
+
+        * {
+            width: 100%;
+        }
+
+        .product-title {
+            @include stripper();
+            font-size: $fontSizeTitle;
+            font-weight: 200;
+        }
+
+
+
+        .price {
+            .discount {
+                color: $primaryColor;
+                font-weight: 300;
+            }
+
+            .fixed-price {
+                font-weight: 500;
+                color: $AccentColor;
+            }
+        }
+
+
+    }
+
+}
+
+.lastView {
+    @include verticalCenter();
+    flex-wrap: wrap;
+    height: 121px;
+    width: 260px;
+
+    h4 {
+        font-size: 13px !important;
+    }
+
+    * {
+        font-size: $fontSizeCaption;
+    }
+
+    .card-image {
+        height: 100%;
+        width: 40%;
+        background-position: center center;
+
+        .card-image-swapper {
+            padding: 8px 1px;
+        }
+    }
+
+    .card-body {
+        height: 100%;
+        width: 60%;
+
+    }
+}
+
+@media screen and (min-width:1135px) {
+    .lastView {
+        width: 300px !important;
+    }
+
+    h4 {
+        font-size: $fontSizeBodyText !important;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .card {
+        width: 220px;
+    }
+
+    h4 {
+        font-size: $fontSizeBodyText !important;
+    }
+}
+
+@media screen and (max-width: 450px) {
+    .card {
+        width: 160px;
+
+        .card-image {
+            height: 50% !important;
+        }
+
+        .card-body {
+            height: 50% !important;
+        }
+
+        * {
+
+            font-size: 12px !important;
+        }
+    }
+}
